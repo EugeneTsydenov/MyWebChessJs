@@ -4,6 +4,7 @@ import {selectCell} from "./SelectCell.js";
 import {addAvailableClass, clearAvailableHighlighting} from "./AvailableCellUtilities.js";
 import {selectedCellMove} from "./MoveUtilities.js";
 import {renderBoard} from "./RenderUtilities.js";
+import showCurrentPlayer from "./ShowCurrentPlayer.js";
 export {clearAvailableHighlighting} from "./AvailableCellUtilities.js"
 
 export const CellComponent = (element) => {
@@ -25,7 +26,29 @@ export const CellComponent = (element) => {
     board.cells.forEach(row => getCells(row));
 
     let selectedCell = null;
-    const closure = selectCell();
+    let currentPlayer = 'white';
+    showCurrentPlayer(currentPlayer);
+
+    function handleCellClick(cell) {
+        if (!selectedCell) {
+            if (cell?.figure?.color !== currentPlayer) return;
+
+            selectedCell = cell;
+            highlightCell(cell);
+            selectCell()(cell, selectedCell);
+        } else if (selectedCell === cell) {
+            selectedCell = null;
+            highlightCell(null);
+        } else {
+            if (selectedCell.figure.color === currentPlayer) {
+                selectedCellMove(cell, selectedCell);
+                currentPlayer = currentPlayer === 'white' ? 'black' : 'white';
+            }
+            selectedCell = null;
+            highlightCell(null);
+            showCurrentPlayer(currentPlayer)
+        }
+    }
 
     function getCells(row) {
         row.forEach(cell => {
@@ -37,19 +60,9 @@ export const CellComponent = (element) => {
             cell.board = board;
             square.draggable = true;
             square.onclick = () => {
-                if (!selectedCell) {
-                    selectedCell = cell;
-                    highlightCell(cell);
-                    closure(cell, selectedCell);
-                } else if (selectedCell === cell) {
-                    selectedCell = null;
-                    highlightCell(null);
-                } else {
-                    selectedCellMove(cell, selectedCell);
-                    selectedCell = null;
-                    highlightCell(null);
-                }
+                handleCellClick(cell)
             }
         });
     }
 }
+
