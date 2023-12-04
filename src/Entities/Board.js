@@ -10,6 +10,8 @@ import Rook from "./Figures/Rook.js";
 
 export default class Board {
     cells = [];
+    lostBlackFigures = [];
+    lostWhiteFigures = [];
 
     initCells() {
         for(let i = 0; i < 8; i++) {

@@ -40,15 +40,19 @@ export const CellComponent = (element) => {
             selectedCell = null;
             highlightCell(null);
         } else {
-            if (selectedCell.figure.color === currentPlayer) {
-                selectedCellMove(cell, selectedCell);
+            if (
+                selectedCell.figure.color === currentPlayer &&
+                cell?.figure?.color !== selectedCell?.figure?.color
+            ) {
                 currentPlayer = currentPlayer === 'white' ? 'black' : 'white';
+                showCurrentPlayer(currentPlayer);
+                selectedCellMove(cell, selectedCell);
             }
             selectedCell = null;
             highlightCell(null);
-            showCurrentPlayer(currentPlayer)
         }
     }
+
 
     function getCells(row) {
         row.forEach(cell => {

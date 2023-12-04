@@ -1,10 +1,11 @@
 import Board from "./Board.js";
+import {Colors} from "../data/Colors.js";
 
 export default class Cell {
     constructor(x, y, color, figure = null) {
         this.x = x;
         this.y = y;
-        this.board = new Board();
+        this.board = null;
         this.color = color;
         this.figure = figure;
         this.available = true;
@@ -80,13 +81,24 @@ export default class Cell {
         this.figure.cell = this;
     }
 
+    addLostFigure(figure) {
+        (figure.color === Colors.BLACK)
+            ? this.board.lostBlackFigures.push(figure)
+            : this.board.lostWhiteFigures.push(figure)
+    }
+
     moveFigure(cell) {
-        if(!this.figure) {
+        if (!this.figure) {
             return;
         }
-        if(this.figure && this.figure?.canMove(cell) && this?.figure?.color !== cell?.figure?.color) {
-            cell.setFigure(this.figure)
-            this.figure.moveFigure(cell)
+
+        if (this.figure && this.figure.canMove(cell)) {
+            if (cell && cell.figure && this.figure.color !== cell.figure.color) {
+                this.addLostFigure(cell.figure);
+            }
+
+            cell.setFigure(this.figure);
+            this.figure.moveFigure(cell);
             this.figure = null;
         }
     }
