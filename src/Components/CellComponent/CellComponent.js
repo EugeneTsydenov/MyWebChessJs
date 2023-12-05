@@ -5,6 +5,7 @@ import {addAvailableClass, clearAvailableHighlighting} from "./AvailableCellUtil
 import {selectedCellMove} from "./MoveUtilities.js";
 import {renderBoard} from "./RenderUtilities.js";
 import showCurrentPlayer from "./ShowCurrentPlayer.js";
+import renderLostFigures from "../LostFigures/LostFigures.js";
 export {clearAvailableHighlighting} from "./AvailableCellUtilities.js"
 
 export const CellComponent = (element) => {
@@ -40,13 +41,13 @@ export const CellComponent = (element) => {
             selectedCell = null;
             highlightCell(null);
         } else {
-            if (
-                selectedCell.figure.color === currentPlayer &&
-                cell?.figure?.color !== selectedCell?.figure?.color
-            ) {
+            if (selectedCell.figure.color === currentPlayer
+                && cell?.figure?.color !== selectedCell?.figure?.color
+                && !!selectedCell?.figure.canMove(cell)) {
                 currentPlayer = currentPlayer === 'white' ? 'black' : 'white';
                 showCurrentPlayer(currentPlayer);
                 selectedCellMove(cell, selectedCell);
+                renderLostFigures(board);
             }
             selectedCell = null;
             highlightCell(null);

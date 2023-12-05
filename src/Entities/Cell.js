@@ -2,10 +2,10 @@ import Board from "./Board.js";
 import {Colors} from "../data/Colors.js";
 
 export default class Cell {
-    constructor(x, y, color, figure = null) {
+    constructor(x, y, color, figure = null, board) {
         this.x = x;
         this.y = y;
-        this.board = null;
+        this.board = board;
         this.color = color;
         this.figure = figure;
         this.available = true;

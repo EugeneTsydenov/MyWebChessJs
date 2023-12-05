@@ -44,6 +44,8 @@ export default class Board {
     getCopyBoard() {
         const newBoard = new Board();
         newBoard.cells = this.cells.map(row => [...row]);
+        newBoard.lostBlackFigures = this.lostBlackFigures;
+        newBoard.lostWhiteFigures = this.lostWhiteFigures;
         return newBoard;
     }
 
