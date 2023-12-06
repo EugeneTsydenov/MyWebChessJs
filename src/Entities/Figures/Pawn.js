@@ -1,7 +1,7 @@
 import Figure from "../Figure.js";
 import { FigureNames } from "../../data/FigureNames.js";
-import blackLogo from '../../images/black-pawn.svg';
-import whiteLogo from '../../images/white-pawn.svg';
+import blackLogo from '../../public/images/black-pawn.svg';
+import whiteLogo from '../../public/images/white-pawn.svg';
 import {Colors} from "../../data/Colors.js";
 
 export default class Pawn extends Figure {

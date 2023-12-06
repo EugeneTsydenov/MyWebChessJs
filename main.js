@@ -19,7 +19,11 @@ document.querySelector('#app').innerHTML = `
                 <ul class="lost-figures__list--black lost-figures__list"></ul>
             </div>
         </div>
-        <div class='wrapper'>
+        <div class="time-and-board">
+            <div class="timer black-timer"></div>
+            <div class='wrapper'>
+            </div>
+            <div class="timer white-timer"></div>
         </div>
     </main>
 `

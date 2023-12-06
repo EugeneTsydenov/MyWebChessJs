@@ -10,5 +10,10 @@
   },
   "devDependencies": {
     "vite": "^5.0.0"
+  },
+  "build": {
+    "outDir": "dist",
+    "assetsDir": ".",
+    "sourcemap": false
   }
 }

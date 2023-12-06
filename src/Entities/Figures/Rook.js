@@ -1,7 +1,7 @@
 import Figure from "../Figure.js";
 import { FigureNames } from "../../data/FigureNames.js";
-import blackLogo from '../../images/black-rook.svg';
-import whiteLogo from '../../images/white-rook.svg';
+import blackLogo from '../../public/images/black-rook.svg';
+import whiteLogo from '../../public/images/white-rook.svg';
 
 export default class Rook extends Figure {
     constructor(cell, color) {

@@ -139,3 +139,18 @@ body {
     width: 20px;
     height: 20px;
 }
+
+.figure {
+    min-width: 60px;
+    min-height: 60px;
+}
+
+.time-and-board {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.timer {
+    font-size: 20px;
+}

@@ -6,7 +6,13 @@ import {selectedCellMove} from "./MoveUtilities.js";
 import {renderBoard} from "./RenderUtilities.js";
 import showCurrentPlayer from "./ShowCurrentPlayer.js";
 import renderLostFigures from "../LostFigures/LostFigures.js";
-export {clearAvailableHighlighting} from "./AvailableCellUtilities.js"
+import {
+    showBlackTimer,
+    showWhiteTimer,
+    startBlackTimer, startWhiteTimer, stopBlackTimer,
+    stopWhiteTimer,
+} from "./ShowTimer.js";
+export {clearAvailableHighlighting} from "./AvailableCellUtilities.js";
 
 export const CellComponent = (element) => {
     let board = new Board();
@@ -44,6 +50,17 @@ export const CellComponent = (element) => {
             if (selectedCell.figure.color === currentPlayer
                 && cell?.figure?.color !== selectedCell?.figure?.color
                 && !!selectedCell?.figure.canMove(cell)) {
+                if (selectedCell?.figure?.color === 'white') {
+                    stopWhiteTimer();
+                    startBlackTimer();
+                    showBlackTimer()
+                }
+                if (selectedCell?.figure?.color === 'black') {
+                    stopBlackTimer();
+                    startWhiteTimer();
+                    showWhiteTimer()
+                }
+
                 currentPlayer = currentPlayer === 'white' ? 'black' : 'white';
                 showCurrentPlayer(currentPlayer);
                 selectedCellMove(cell, selectedCell);
@@ -54,6 +71,10 @@ export const CellComponent = (element) => {
         }
     }
 
+    startWhiteTimer();
+
+    showBlackTimer();
+    showWhiteTimer();
 
     function getCells(row) {
         row.forEach(cell => {

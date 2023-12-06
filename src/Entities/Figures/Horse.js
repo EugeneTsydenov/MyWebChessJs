@@ -1,7 +1,7 @@
 import Figure from "../Figure.js";
 import { FigureNames } from "../../data/FigureNames.js";
-import blackLogo from '../../images/black-horse.svg';
-import whiteLogo from '../../images/white-horse.svg';
+import blackLogo from '../../public/images/black-horse.svg';
+import whiteLogo from '../../public/images/white-horse.svg';
 
 export default class Horse extends Figure {
     constructor(cell, color) {

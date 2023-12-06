@@ -1,7 +1,7 @@
 import Figure from "../Figure.js";
 import { FigureNames } from "../../data/FigureNames.js";
-import blackLogo from '../../images/black-queen.svg';
-import whiteLogo from '../../images/white-queen.svg';
+import blackLogo from '../../public/images/black-queen.svg';
+import whiteLogo from '../../public/images/white-queen.svg';
 
 export default class Queen extends Figure {
     constructor(cell, color) {
