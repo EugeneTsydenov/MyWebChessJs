@@ -132,7 +132,7 @@ body {
     gap: 10px;
     margin-right: auto;
     flex-wrap: wrap;
-    max-width: 200px;
+    max-width: 150px;
 }
 
 .lost-figure__img {
@@ -153,4 +153,10 @@ body {
 
 .timer {
     font-size: 20px;
+}
+
+.last-move {
+    height: 100px;
+    width: 100px;
+    background-color: red;
 }
