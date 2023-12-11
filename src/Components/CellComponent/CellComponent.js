@@ -63,7 +63,7 @@ export const CellComponent = (element) => {
 
                 currentPlayer = currentPlayer === 'white' ? 'black' : 'white';
                 showCurrentPlayer(currentPlayer);
-                selectedCellMove(cell, selectedCell);
+                selectedCellMove(cell, selectedCell, highlightCell);
                 renderLostFigures(board);
             }
             selectedCell = null;
@@ -79,9 +79,14 @@ export const CellComponent = (element) => {
     function getCells(row) {
         row.forEach(cell => {
             const square = document.createElement('div');
-            square.className = `square ${'square-' + cell.color}`;
+            square.className = `square ${'square-' + cell.color} ${'cor-' + cell.x + cell.y}`;
             square.id = cell.x + '' + cell.y;
             square.innerHTML += createLogo(cell);
+            if(cell.x === 0 || cell.x === 7) {
+                const el = document.createElement('div');
+                el.className = `change-pawn-${cell.x}${cell.y} change`;
+                square.append(el);
+            }
             element.appendChild(square);
             cell.board = board;
             square.draggable = true;

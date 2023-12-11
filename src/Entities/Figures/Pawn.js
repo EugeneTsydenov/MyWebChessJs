@@ -54,4 +54,10 @@ export default class Pawn extends Figure {
             this.isFirstStep = false;
         }
     };
+
+    promotePawn(newFigure) {
+        this.cell.figure = newFigure;
+        this.name = newFigure.name;
+        this.logo = newFigure.logo
+    }
 }

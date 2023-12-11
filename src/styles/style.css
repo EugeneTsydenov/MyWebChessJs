@@ -39,11 +39,6 @@ button {
     padding: 0;
 }
 
-input {
-    border: none;
-    background-color: transparent;
-}
-
 body {
     display: flex;
     align-items: center;
@@ -149,6 +144,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    position: relative;
 }
 
 .timer {
@@ -159,4 +155,48 @@ body {
     height: 100px;
     width: 100px;
     background-color: red;
+}
+
+.change-white {
+    margin-top: 50px;
+    align-self: self-start;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: wheat;
+    transition: all 0.5s ease;
+}
+
+.change-black {
+    align-self: self-end;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+    background-color: wheat;
+    transition: all 0.5s ease;
+}
+
+.change-btn:hover {
+    background-color: #5a4624;
+    transition: all 0.5s ease;
+}
+
+.change-btn:hover img{
+    transform: scale(1.2);
+    transition: all 0.5s ease;
+}
+
+.promote-figure {
+    min-width: 60px;
+    height: 60px;
+}
+
+.disabled-board {
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    bottom: 37px;
+    top: 37px;
+    right: 0;
+    background-color: rgba(54, 51, 51, 0.5);
 }

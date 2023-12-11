@@ -25,6 +25,8 @@ document.querySelector('#app').innerHTML = `
             </div>
             <div class="timer white-timer"></div>
         </div>
+        <div class="change-white change"></div>
+        <div class="change-black change"></div>
     </main>
 `
 
